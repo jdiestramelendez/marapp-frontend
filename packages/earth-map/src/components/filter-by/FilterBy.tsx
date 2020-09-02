@@ -17,7 +17,7 @@
   specific language governing permissions and limitations under the License.
 */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 
 import { cleanFilters, countFilters } from 'utils/filters';

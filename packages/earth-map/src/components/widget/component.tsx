@@ -254,7 +254,7 @@ class Widget extends React.PureComponent<IWidgetTemplate, IWidgetState> {
         {/* Spinner */}
         {loading && <Spinner size="medium" />}
 
-        <div className="widget--container ng-padding-large-vertical ng-padding-medium-horizontal">
+        <div className="widget--container ng-padding-large-vertical ng-padding-medium-horizontal translate">
           {/* HEADER */}
           {header && (
             <header className="ng-flex ng-flex-space-between ng-padding-medium-bottom">

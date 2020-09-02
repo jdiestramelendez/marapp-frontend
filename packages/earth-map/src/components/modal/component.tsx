@@ -63,7 +63,7 @@ class ModalComponent extends PureComponent<IModalComponent> {
         >
           <i className="ng-icon-close"></i>
         </button>
-        <div className="modal-content">{children}</div>
+        <div className="modal-content translate">{children}</div>
       </Modal>
     );
   }

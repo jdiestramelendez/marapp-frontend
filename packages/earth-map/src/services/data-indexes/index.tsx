@@ -22,7 +22,9 @@ import Jsona, { SwitchCaseJsonMapper, SwitchCaseModelMapper } from 'jsona';
 import { encodeQueryToURL } from 'utils/query';
 import { AxiosInstance } from 'axios';
 
-import { API_URL } from "config";
+import { API_URL, GT_API_KEY } from "config";
+import widgets from 'components/widgets';
+
 
 /**
  * DataIndexes service class
@@ -77,7 +79,26 @@ export function fetchDataIndex(id, options = {}) {
 
 export function fetchDataIndexes(options = {}) {
   const dataIndexQuery = encodeQueryToURL('dashboards', options);
-  return service.request(dataIndexQuery);
+  return service.request(dataIndexQuery).then((data: any[]) => {
+    // return new Promise(resolve => {
+    //   const allDescriptions = data.map(item => item.widgets.map((widget: any) => widget.description)).flat(2);
+
+    //   window['__GT'].translate(allDescriptions, 'en', localStorage.getItem('__lang'), (err, traslations) => {
+    //     resolve(data.map(item => {
+    //       return {
+    //         ...item,
+    //         widgets: item.widgets.map(widget => {
+    //           return {
+    //             ...widget,
+    //             description: traslations.shift().translatedText
+    //           };
+    //         })
+    //       };
+    //     }));
+    //   })
+    // });
+    return data;
+  });
 }
 
 export default service;

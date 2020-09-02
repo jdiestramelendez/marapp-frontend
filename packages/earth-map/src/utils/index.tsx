@@ -22,7 +22,11 @@ import React from 'react';
 import urljoin from 'url-join';
 import get from 'lodash/get';
 
-import { BASE_URL } from 'config';
+import { BASE_URL, GT_API_KEY } from 'config';
+
+import googleTranslate from 'google-translate';
+
+const GT = googleTranslate(GT_API_KEY, {});
 
 /**
  * Route to target URL in case of success/failure.
@@ -108,3 +112,5 @@ export const getAvailableOrgs = (permissions: { [key: string]: string }): string
  * No operation function. Does nothing, but still useful
  */
 export const noop = (): void => {};
+
+window['__GT'] = GT;

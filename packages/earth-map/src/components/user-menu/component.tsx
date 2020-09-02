@@ -56,6 +56,13 @@ export default function UserMenuComponent() {
     login();
   };
 
+  const handleLangChange = newLang => {
+    localStorage.setItem('__lang', newLang);
+    window.location.reload();
+  };
+
+  const __lang = localStorage.getItem('__lang');
+
   return (
     <div className="ng-user-account" ref={menuRef}>
       <button className="ng-unstyled" onClick={(e) => toggleDrop(e)}>
@@ -74,6 +81,14 @@ export default function UserMenuComponent() {
           >
             <ul className="ng-user-profile-dropdown">
               <li>ACCOUNT</li>
+              <li>
+                <label>Language</label>
+                <select onChange={e => handleLangChange(e.target.value)}>
+                  <option value="en" selected={__lang == 'en'}>English</option>
+                  <option value="fr" selected={__lang == 'fr'}>French</option>
+                  <option value="es" selected={__lang == 'es'}>Spanish</option>
+                </select>
+              </li>
               { userData.allGroups.length === 0 ? 
               <li className="ng-user-profile-signin">
                 <a onClick={handleLogin}>Sign in</a>

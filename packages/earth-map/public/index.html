@@ -44,5 +44,92 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <!-- <script type="text/javascript">
+      function googleTranslateElementInit() {
+          new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'en,es,fr',
+          }, 'root');
+      }
+    </script>
+      
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> -->
+
+    <!-- <script>
+      (() => {
+        function debounce(func, wait, immediate) {
+          var timeout;
+          return function() {
+            var context = this, args = arguments;
+            var later = function() {
+              timeout = null;
+              if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+          };
+        };
+
+        const __lang = localStorage.getItem('__lang') || 'en';
+
+        if (__lang === 'en') {
+          return;
+        }
+
+
+        const _wm = new WeakMap();
+        const _data = new Map();
+
+        function getTextNodes(parentNode) {
+          const result = [];
+          const walker = document.createTreeWalker(parentNode, NodeFilter.SHOW_TEXT, {
+            acceptNode: node => {
+              const text = node.textContent.trim();
+        
+              return text.length > 1 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+            }
+          });
+        
+          let nodeRef;
+        
+          while (nodeRef = walker.nextNode()) {
+            result.push(nodeRef);
+          }
+        
+          return result;
+        }
+
+        const cb = debounce(function(mutationsList) {
+          const els = Array.from(document.querySelectorAll('.translate'));
+
+          els.filter(el => !_wm.has(el)).forEach(el => {
+            _wm[el] = true;
+            const nodesToUpdate = getTextNodes(el);
+            const nodesToTranslate = nodesToUpdate.filter(node => !_data.has(node.textContent));
+
+            if (nodesToTranslate.length === 0) {
+              nodesToUpdate.forEach(node => node.textContent = _data.get(node.textContent));
+              return;
+            }
+
+            const toTranslate = nodesToTranslate.map(node => node.textContent);
+
+            __GT.translate(toTranslate, 'en', __lang, (err, traslations) => {
+              if (err) {
+                console.log(err);
+                return;
+              }
+              toTranslate.forEach(item => _data.set(item, traslations.shift().translatedText));
+
+              nodesToUpdate.forEach(node => node.textContent = _data.get(node.textContent));
+            });
+          });
+        }, 500);
+
+        new MutationObserver(cb).observe(document.querySelector('body'), { subtree: true, childList: true });
+      })(); -->
+      </script>
   </body>
 </html>

@@ -14,12 +14,12 @@ interface IProps {
 
 const SidebarLayoutSearch = (props: IProps) => (
   <div style={{ height: '100%', overflow: 'auto' }}>
-    <div className="ng-sticky-top ng-margin-bottom">
+    <div className="ng-sticky-top ng-margin-bottom translate">
       <Header />
       <Tabs
         value={props.panel}
         onChange={props.setSidebarPanel}
-        className="ng-padding-medium-horizontal ng-padding-bottom ng-ep-background-dark">
+        className="ng-padding-medium-horizontal ng-padding-bottom ng-ep-background-dark notranslate">
         <Tab label="Places" value="places" />
         <Tab label="Layers" value="layers" />
       </Tabs>
